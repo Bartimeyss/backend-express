@@ -36,12 +36,13 @@ router.get('/:id', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
   let new_id = users_id++;
-  usrs.items.push({
+  const newUser = {
     "id": new_id,
     "name": req.body.name,
-  })
+  };
+  usrs.items.push(newUser)
 
-  res.status(201).json(newUser);
+  res.status(201).send(newUser);
 })
 
 module.exports = router;
